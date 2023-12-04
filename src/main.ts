@@ -11,7 +11,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const calculationService = new InvestmentCalculation()
 const calculate = new InvestmentHandler(calculationService)
 app.get('/fdReturns', async (req, res) => {
-  console.log("req", req.query)
   const a = await calculate.getFDReturn(req)
   res.send(a)
 })

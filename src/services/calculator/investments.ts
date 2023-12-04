@@ -4,7 +4,8 @@ import { IInvestmentCalculation } from "./types.js";
 export class InvestmentCalculation implements IInvestmentCalculation{
     
    fd = async (request: getFDReturnsRequest): Promise<getFDReturnsResponse> => {
-    const calculateInterest = request.amount * Math.pow( (1 + request.interestRate/100), request.time) - request.amount
+    // quarterly compunding 
+    const calculateInterest = request.amount * Math.pow( (1 + request.interestRate/400), 4*request.time) - request.amount
     const compundinterestGain = Math.round((calculateInterest + Number.EPSILON) * 100) / 100
     return {
         interestGain: compundinterestGain,
