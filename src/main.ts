@@ -10,10 +10,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 const calculationService = new InvestmentCalculation()
 const calculate = new InvestmentHandler(calculationService)
 app.get('/fdReturns', async (req, res) => {
-	const a = await calculate.getFDReturn(req)
-	res.send(a)
+    const a = await calculate.getFDReturn(req)
+    res.send(a)
 })
 
 app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${port}`)
 })
